@@ -11,6 +11,7 @@ namespace ControleContatos.Controllers
 
         public IActionResult Create()
         {
+           
             return View();
         }
 
@@ -21,6 +22,13 @@ namespace ControleContatos.Controllers
 
         public IActionResult Delete()
         {
+           
+            return View();
+        }
+
+        public IActionResult DeleteContato()
+        {
+
             return View();
         }
     }
