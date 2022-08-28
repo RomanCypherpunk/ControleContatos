@@ -6,6 +6,7 @@ namespace ControleContatos.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
