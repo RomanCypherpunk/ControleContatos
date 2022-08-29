@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ControleContatos.Data;
 using Microsoft.EntityFrameworkCore;
+using ControleContatos.Repositorio;
 
 namespace ControleContatos
 {
@@ -20,7 +21,9 @@ namespace ControleContatos
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddEntityFrameworkSqlServer();
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            
             builder.Services.AddDbContext<BancoContext>
             (options => options.UseSqlServer("Data Source=192.168.20.138;Initial Catalog=Exercicios_CRUD_MVC;User ID=sa;Password=123456;TrustServerCertificate=True"));
 
