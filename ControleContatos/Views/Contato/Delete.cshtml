@@ -1,6 +1,8 @@
-﻿<div class="text-center">
+﻿@model ContatoModel
 
-    <h3 >Deseja apagar o Contato?</h3>
-    <a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="DeleteContato" > Excluir </a>
+<div class="text-center">
+
+    <h3 >Deseja apagar o Contato (@Model.Nome)? </h3>
+    <a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="DeleteContato" asp-route-id="@Model.ID"> Excluir </a>
     <a class="btn btn-secondary" role="button" asp-controller="Contato" asp-action="Index" > Cancelar </a>
 </div>
