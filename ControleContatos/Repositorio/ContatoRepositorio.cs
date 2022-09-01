@@ -51,7 +51,7 @@ namespace ControleContatos.Repositorio
 
         public bool Apagar(int id)
         {
-            ContatoModel contatoDB = ListarporID(contato.ID);
+            ContatoModel contatoDB = ListarporID(id);
 
             if (contatoDB == null) throw new System.Exception("Houve erro ao apagar o Contato");
 
