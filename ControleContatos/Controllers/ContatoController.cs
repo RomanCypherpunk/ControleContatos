@@ -55,25 +55,34 @@ namespace ControleContatos.Controllers
                     return RedirectToAction("Index");
                 }
 
-                return View(contato);
+                return View("Create", contato);
             }
             catch (Exception erro)
             {
                 TempData["MensagemErro"] = $"Ops! Nao conseguimos cadastrar o seu Contato, tente novamente. Detalhe do Erro: {erro.Message } ";
-                throw;
+                return RedirectToAction("Index");
             }
         }
 
         [HttpPost]
         public IActionResult Alterar(ContatoModel contato)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _contatoRepositorio.Atualizar(contato);
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Atualizar(contato);
+                    TempData["MensagemSucesso"] = "Contato alterado com Sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View("Edit", contato);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops! Nao conseguimos atualizar o seu Contato, tente novamente. Detalhe do Erro: {erro.Message} ";
                 return RedirectToAction("Index");
             }
-
-            return View("Editar", contato);
         }
     }
 }

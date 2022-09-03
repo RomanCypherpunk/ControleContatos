@@ -9,17 +9,29 @@
         <a role="button" class="btn btn-light" asp-controller="Contato" asp-action="Create"> Adicionar novo contato </a>
 
        <br />
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+           <div class="alert alert-success" role="alert">
+                <button type="button" class="btn btn-danger btn-sm close-alert"> X </button>
+          @TempData["MensagemSucesso"]
+        </div> 
+        }
+
+        @if (TempData["MensagemErro"] != null)
+        {
+           <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert"> X </button>
+          @TempData["MensagemErro"]
+          </div>        
+        }
+
+
     </div>
 
-            <div class="alert alert-success" role="alert">
-                <button type="button" class="btn btn-danger btn-sm close-alert"> X </button>
-          A simple success alert—check it out!
-        </div>
+        <br></br>
 
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert"> X </button>
-          A simple danger alert—check it out!
-        </div>
+        
 
     <h1 class="display-4">Listagem de Contatos</h1>
 
