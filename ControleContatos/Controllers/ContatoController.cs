@@ -39,8 +39,26 @@ namespace ControleContatos.Controllers
 
         public IActionResult DeleteContato(int id)
         {
-            _contatoRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _contatoRepositorio.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Contato apagado com Sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Ops! Nao conseguimos apagar seu contato.";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                TempData["MensagemErro"] = "Ops! Nao conseguimos apagar seu contato.";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
